@@ -34,11 +34,15 @@ class Producto {
 }
 
 const dobok = new Producto("Dobok talle 6", 15300);
-const cituron = new Producto("Cinturon Negro", 4500);
+const cinturon = new Producto("Cinturon Negro", 4500);
 const zapatilla  = new Producto("Zapatillas talle 40", 63000);
 
 // Guardar en array
-const productos = [dobok, cituron, zapatilla];
+const productos = [];
+productos.push(dobok);
+productos.push(cinturon);
+productos.push(zapatilla);
+
 
 // Mostrar datos
 productos.forEach((producto) => producto.imprimirDatos());
