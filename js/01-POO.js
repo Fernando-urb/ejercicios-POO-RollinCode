@@ -2,48 +2,38 @@
 
 // Output:
 
-
-
 // objeto.encender();
 // objeto.apadar()
 // auto encendido
 // El auto se apagó
 
-
-
 class Autos {
-    constructor(color ,marca , modelo, year) {
-        this._color = color;
-        this._marca = marca;
-        this._modelo= modelo;
-        this._year = year;
-        this._estadoDelAuto = false ;
-       
+  constructor(color, marca, modelo, year) {
+    this._color = color;
+    this._marca = marca;
+    this._modelo = modelo;
+    this._year = year;
+    this._estadoDelAuto = false;
+  }
+  encender() {
+    if (this._estadoDelAuto) {
+      console.log(`el auto ${this._modelo} ya esta encendido`);
+    } else {
+      this._estadoDelAuto === true;
+      console.log(`el auto ${this._modelo} se encendido`);
     }
-    encender(){
-        if(this._estadoDelAuto ){
-            console.log(`el auto ${this._modelo} ya esta encendido`);
-            
-        }else{
-            this._estadoDelAuto === true;
-            console.log(`el auto ${this._modelo} se encendido`);
-        }
-
+  }
+  apagar() {
+    if (!this._estadoDelAuto) {
+      console.log(`el auto ${this._modelo} se apagó`);
+    } else {
+      this._estadoDelAuto === false;
+      console.log(`el auto ${this._modelo} se apago`);
     }
-    apagar(){
-        if(!this._estadoDelAuto ){
-            console.log(`el auto ${this._modelo} se apagó`);
-            
-        }else{
-            this._estadoDelAuto === false;
-            console.log(`el auto ${this._modelo} se apago`);
-
-        }
-
-    }
+  }
 }
 
-const miAuto = new Autos ("plata" , "chevrolet","meriva","2007")
+const miAuto = new Autos("plata", "chevrolet", "meriva", "2007");
 console.log(miAuto);
 
 miAuto.encender();
