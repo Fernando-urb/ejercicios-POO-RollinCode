@@ -6,64 +6,61 @@
 
 
 class Aeropuerto {
-    constructor(nombreAeropuerto , listaDeAviones) {
-        this._nombreAeropuerto = nombreAeropuerto;
-        this._listaDeAviones = listaDeAviones;
+  constructor(nombreAeropuerto) {
+    this.nombreAeropuerto = nombreAeropuerto;
+    this.listaAviones = [];
+  }
 
-        
+  agregarAvion(avion) {
+    this.listaAviones.push(avion);
+  }
+
+  buscarAvion(nombre) {
+    const avion = this.listaAviones.find((avi) => avi.nombre === nombre);
+    if (avion) {
+      console.log(
+        `Nombre: ${avion.nombre}, Capacidad: ${avion.capacidad}, Destino: ${avion.destino}`
+      );
+      return avion;
+    } else {
+      console.log("El avion no existe");
     }
-    agregarAvion(avion){
-        this._listaDeAviones.push(avion);
-        console.log(`Se agrego el avion ${avion} a la lista de aviones`);
-        
-
-
-
-    }
-    buscarAvion(nombreAvion){
-        const avionBuscado = this._listaDeAviones.find(avion => avion._nombre === nombreAvion);
-        if (avionBuscado) {
-            console.log(`El avion ${nombreAvion} se encuentra en la lista de aviones`);
-        } else {
-            console.log(`El avion ${nombreAvion} no se encuentra en la lista de aviones`);
-        }
-        
-    }
-
+  }
 }
-class Aviones {
-    constructor(nombre, capacidad, destino, listaDePasajeros){
-        this._nombre = nombre;
-        this._capacidad = capacidad;
-        this._destino = destino;
-        this._listaDePasajeros = listaDePasajeros;
-        
-    }
-    abordarAvion(pasajero){
-        if(this._listaDePasajeros.length < this._capacidad){
-            this._listaDePasajeros.push(pasajero);
-            console.log(`Se abordo el pasajero ${pasajero} al avion ${this._nombre}`);
-            
-         
-        }else{
-               console.log(`El avion ${this._nombre} se encuentra lleno`);
-        }
 
+class Avion {
+  constructor(nombre, capacidad, destino) {
+    this.nombre = nombre;
+    this.capacidad = capacidad;
+    this.destino = destino;
+    this.listaPasajeros = [];
+  }
 
+  abordar(pasajero) {
+    if (this.listaPasajeros.length < this.capacidad) {
+      this.listaPasajeros.push(pasajero);
+      console.log(`${pasajero} ha abordado el avión ${this.nombre}`);
+    } else {
+      console.log(`El avión ${this.nombre} está lleno`);
     }
+  }
 }
-const AeropuertoInternacional = new Aeropuerto(
-  "Aeropuerto Internacional",
-  [
-    new Aviones("Avion 1", 100, "Londres", ["Pasajero 1", "Pasajero 2", "Pasajero 3"]),
-    new Aviones("Avion 2", 200, "Paris", ["Pasajero 4", "Pasajero 5", "Pasajero 6"]),
-    new Aviones("Avion 3", 300, "New York", ["Pasajero 7", "Pasajero 8", "Pasajero 9"]),
-  ]
-);
 
-const nuevoAvion = new Aviones("Avion 4", 400, "Tokio", []);
-AeropuertoInternacional.agregarAvion(nuevoAvion);
+const aeropuerto1 = new Aeropuerto("Aeropuerto Internacional");
 
-AeropuertoInternacional.buscarAvion("Avion 2");
+let avion1 = new Avion("Boeing 747", 3, "New York, Estados Unidos");
+let avion2 = new Avion("Boeing 748", 5, "Brasil");
 
-AeropuertoInternacional._listaDeAviones[0].abordarAvion("Pasajero 10");
+aeropuerto1.agregarAvion(avion1);
+aeropuerto1.agregarAvion(avion2);
+
+console.log(aeropuerto1);
+
+let avionEncontrado = aeropuerto1.buscarAvion("Boeing 748");
+if (avionEncontrado) {
+  avionEncontrado.abordar("Fernando");
+  avionEncontrado.abordar("Daniel");
+  avionEncontrado.abordar("Marcos");
+  avionEncontrado.abordar("Julian");
+  avionEncontrado.abordar("Ezequiel");
+}
